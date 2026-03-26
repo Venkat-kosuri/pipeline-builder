@@ -4,6 +4,16 @@ import React, { useState } from 'react';
 import { BaseNode } from '../BaseNode';
 import { FieldRow, Input, Label } from '../nodeControls';
 
+/**
+ * DelayNode delays items by a configured amount.
+ *
+ * Handles:
+ * - Inputs: `in`
+ * - Outputs: `out`
+ *
+ * UI field (local state):
+ * - `delayMs` (milliseconds)
+ */
 export function DelayNode({ id }: { id: string }) {
   const [delayMs, setDelayMs] = useState<number>(500);
 

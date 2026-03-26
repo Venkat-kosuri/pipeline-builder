@@ -4,8 +4,17 @@ import React, { useMemo, useState } from 'react';
 import { BaseNode } from '../BaseNode';
 import { FieldRow, Input, Label, Select } from '../nodeControls';
 
-// Compatibility: nodeControls.tsx exports named helpers; this wrapper keeps imports consistent.
-// (We create nodeControlsCompat below.)
+/**
+ * InputNode represents a source/input node in the pipeline.
+ *
+ * Handles:
+ * - Inputs: none
+ * - Outputs: one output handle with id `value`
+ *
+ * Editable fields (local UI state):
+ * - Name: `inputName` (fallback: derived from node id)
+ * - Type: `inputType` (fallback: `Text`)
+ */
 
 export function InputNode({ id, data }: { id: string; data: any }) {
   const initialName = useMemo(() => data?.inputName || id.replace('customInput-', 'input_'), [data, id]);

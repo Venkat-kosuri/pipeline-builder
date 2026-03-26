@@ -3,6 +3,13 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { BaseNode } from '../BaseNode';
 
+/**
+ * Extracts unique variable names from a text template.
+ *
+ * Template syntax: `{{variableName}}`
+ * - Whitespace inside braces is allowed.
+ * - `variableName` must match a JS identifier-like pattern.
+ */
 function extractVariables(text: string) {
   // Matches: {{ variableName }} with valid JS identifier characters.
   // - Allows optional whitespace inside braces.
@@ -23,6 +30,14 @@ function extractVariables(text: string) {
   return found;
 }
 
+/**
+ * TextNode provides an editable text template and generates input handles
+ * for each `{{variableName}}` it detects.
+ *
+ * Handles:
+ * - Inputs: one per detected variable name
+ * - Outputs: `output`
+ */
 export function TextNode({ id, data }: { id: string; data: any }) {
   const [currText, setCurrText] = useState<string>(data?.text || '{{input}}');
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);

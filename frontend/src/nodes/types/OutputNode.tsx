@@ -4,6 +4,17 @@ import React, { useMemo, useState } from 'react';
 import { BaseNode } from '../BaseNode';
 import { FieldRow, Input, Label, Select } from '../nodeControls';
 
+/**
+ * OutputNode represents a pipeline output sink.
+ *
+ * Handles:
+ * - Inputs: `value`
+ * - Outputs: none
+ *
+ * UI fields (local state):
+ * - `outputName` (fallback: derived from node id)
+ * - `outputType` (fallback: `Text`)
+ */
 export function OutputNode({ id, data }: { id: string; data: any }) {
   const initialName = useMemo(
     () => data?.outputName || id.replace('customOutput-', 'output_'),

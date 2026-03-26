@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * PipelineToolbar renders the palette of draggable node types.
+ *
+ * React Flow drag/drop expects we store a payload on `dataTransfer` with the key
+ * `application/reactflow` and include a `nodeType` string. The canvas reads that
+ * value in `PipelineUI` to instantiate the correct node component.
+ */
 import { DraggableNode } from './draggableNode';
 
 export function PipelineToolbar() {

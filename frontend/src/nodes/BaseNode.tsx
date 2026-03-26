@@ -1,6 +1,15 @@
 import React from 'react';
 import { Handle, Position } from 'reactflow';
 
+/**
+ * BaseNode renders the common "card" wrapper for all node components.
+ *
+ * Each node provides:
+ * - a title
+ * - input handles (`type="target"`)
+ * - output handles (`type="source"`)
+ * - a `content` area for node-specific form fields
+ */
 export type HandleDef = { id: string; label?: string } | string;
 
 function normalizeHandles(handles: HandleDef[] | undefined): Array<{ id: string; label?: string }> {

@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * Shared form controls used by node components.
+ *
+ * These components are intentionally light wrappers around standard HTML
+ * elements to keep node implementations small.
+ */
 export function FieldRow({ children }: { children: React.ReactNode }) {
   return <div className="flex flex-col gap-1.5">{children}</div>;
 }

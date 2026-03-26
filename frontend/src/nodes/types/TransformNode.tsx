@@ -4,6 +4,16 @@ import React, { useState } from 'react';
 import { BaseNode } from '../BaseNode';
 import { FieldRow, Input, Label } from '../nodeControls';
 
+/**
+ * TransformNode transforms each item using a JS expression.
+ *
+ * Handles:
+ * - Inputs: `in`
+ * - Outputs: `out`
+ *
+ * UI field (local state):
+ * - `transform` (example: `({ ...item, name: item.name.toUpperCase() })`)
+ */
 export function TransformNode({ id }: { id: string }) {
   const [transform, setTransform] = useState('({ ...item, name: item.name.toUpperCase() })');
 

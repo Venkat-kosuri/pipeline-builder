@@ -3,6 +3,13 @@
 import React from 'react';
 import { BaseNode } from '../BaseNode';
 
+/**
+ * LLMNode represents an LLM call node.
+ *
+ * Handles:
+ * - Inputs: `system` and `prompt`
+ * - Output: `response`
+ */
 export function LLMNode({ id }: { id: string; data?: any }) {
   return (
     <BaseNode

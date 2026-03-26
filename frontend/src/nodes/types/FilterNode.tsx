@@ -4,6 +4,16 @@ import React, { useState } from 'react';
 import { BaseNode } from '../BaseNode';
 import { FieldRow, Input, Label } from '../nodeControls';
 
+/**
+ * FilterNode filters a stream of items using a JS expression.
+ *
+ * Handles:
+ * - Inputs: `in`
+ * - Outputs: `out`
+ *
+ * UI field (local state):
+ * - `condition` (a string like `item.enabled === true`)
+ */
 export function FilterNode({ id }: { id: string }) {
   const [condition, setCondition] = useState('item.enabled === true');
 

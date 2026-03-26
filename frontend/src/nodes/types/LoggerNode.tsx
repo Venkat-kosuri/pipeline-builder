@@ -4,6 +4,16 @@ import React, { useState } from 'react';
 import { BaseNode } from '../BaseNode';
 import { FieldRow, Input, Label } from '../nodeControls';
 
+/**
+ * LoggerNode represents a debugging/logging step.
+ *
+ * Handles:
+ * - Inputs: `in`
+ * - Outputs: `out`
+ *
+ * UI field (local state):
+ * - `prefix` (log label/prefix)
+ */
 export function LoggerNode({ id }: { id: string }) {
   const [prefix, setPrefix] = useState('Pipeline Logger');
 

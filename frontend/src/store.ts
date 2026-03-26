@@ -1,5 +1,12 @@
 'use client';
 
+/**
+ * Zustand store backing the pipeline canvas.
+ *
+ * Notes:
+ * - `nodeIDs` generates unique node ids per node type (e.g. `llm-1`, `llm-2`).
+ * - `updateNodeField` updates `node.data[fieldName]` for a specific node.
+ */
 import { create } from 'zustand';
 import {
   addEdge,

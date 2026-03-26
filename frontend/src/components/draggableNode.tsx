@@ -1,5 +1,11 @@
 'use client';
 
+/**
+ * DraggableNode is a palette item used by `PipelineToolbar`.
+ *
+ * On drag start it stores a JSON payload in the drag event so the canvas can
+ * instantiate the matching node type.
+ */
 export function DraggableNode({ type, label }: { type: string; label: string }) {
   const onDragStart = (event: React.DragEvent<HTMLDivElement>) => {
     const appData = { nodeType: type };

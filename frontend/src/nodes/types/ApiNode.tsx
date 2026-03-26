@@ -4,6 +4,17 @@ import React, { useState } from 'react';
 import { BaseNode } from '../BaseNode';
 import { FieldRow, Input, Label, Select } from '../nodeControls';
 
+/**
+ * ApiNode represents an external HTTP request step.
+ *
+ * Handles:
+ * - Inputs: none
+ * - Outputs: `out` (labeled "Response")
+ *
+ * UI fields (local state):
+ * - `url`
+ * - `method`
+ */
 export function ApiNode({ id }: { id: string }) {
   const [url, setUrl] = useState('https://api.example.com/data');
   const [method, setMethod] = useState('POST');

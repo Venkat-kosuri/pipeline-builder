@@ -1,5 +1,13 @@
 'use client';
 
+/**
+ * PipelineUI is the main React Flow canvas.
+ *
+ * It wires up:
+ * - Zustand state for `nodes` and `edges`
+ * - drag/drop handling (create nodes from the palette)
+ * - `nodeTypes` mapping (string type -> React component)
+ */
 import React, { useCallback, useRef, useState } from 'react';
 import ReactFlow, { Controls, Background, MiniMap, type ReactFlowInstance, type NodeTypes } from 'reactflow';
 import { useStore } from '../store';
@@ -17,6 +25,7 @@ import { LoggerNode } from '../nodes/types/LoggerNode';
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
 
+// React Flow uses this map to render each node type by `node.type`.
 const nodeTypes: NodeTypes = {
   customInput: InputNode,
   llm: LLMNode,
@@ -45,6 +54,10 @@ export function PipelineUI() {
     return { id: nodeID };
   }, []);
 
+  /**
+   * Called when the user drops a node from the toolbar onto the canvas.
+   * `event.dataTransfer` contains JSON like: { nodeType: "llm" }
+   */
   const onDrop = useCallback(
     (event: React.DragEvent) => {
       event.preventDefault();
@@ -77,6 +90,7 @@ export function PipelineUI() {
     [getNodeID, addNode, getInitNodeData]
   );
 
+  // Allow dropping by preventing the default browser handling.
   const onDragOver = useCallback((event: React.DragEvent) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';

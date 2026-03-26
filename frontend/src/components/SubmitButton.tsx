@@ -1,9 +1,19 @@
 'use client';
 
+/**
+ * SubmitButton sends the current pipeline graph to the backend API and
+ * displays the parsed result in a modal.
+ */
 import React, { useMemo, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useStore } from '../store';
 
+/**
+ * Parse the pipeline graph by POSTing `{ nodes, edges }` to the backend.
+ *
+ * Backend endpoint: `POST /pipelines/parse`
+ * Response: JSON with `{ num_nodes, num_edges, is_dag }` (or plain text on errors).
+ */
 async function parsePipeline({ nodes, edges }: { nodes: unknown[]; edges: unknown[] }) {
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
   const res = await fetch(`${API_BASE_URL}/pipelines/parse`, {
